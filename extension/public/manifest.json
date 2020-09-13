@@ -1,0 +1,16 @@
+{
+  "name": "CodeBreaker Helper",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "description": "CodeBreaker Helper",
+    "icons": {
+        "512": "logo512.png"
+    },
+    "browser_action": {
+        "default_icon": "logo512.png",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "page": "background.html"
+    }
+}
