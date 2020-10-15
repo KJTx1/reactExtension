@@ -15,6 +15,10 @@ build() {
 
     mv dist/index.html dist/popup.html
 
+    cp -r src/contentScripts dist
+    cp -r src/images dist
+    cp -r src/libs dist
+
     cp src/background/background.js dist
     cp src/background/background.html dist
     # cp src/content/content_script.js dist

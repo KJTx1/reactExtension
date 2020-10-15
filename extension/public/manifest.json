@@ -1,8 +1,9 @@
 {
-  "name": "CodeBreaker Helper",
+  "name": "CodeBreakers Helper",
     "version": "1.0.0",
     "manifest_version": 2,
-    "description": "CodeBreaker Helper",
+    "description": "CodeBreakers helper entension",
+    "permissions": ["https://leetcode.com/*", "activeTab", "storage", "tabs"],
     "icons": {
         "512": "logo512.png"
     },
@@ -11,6 +12,31 @@
         "default_popup": "popup.html"
     },
     "background": {
-        "page": "background.html"
-    }
+        "page": "background.html",
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://leetcode.com/problems/*/"],
+            "js": [
+                "libs/jquery-3.4.1.js",
+                "libs/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js",
+                "libs/showdownjs-showdown-3c120ed/dist/showdown.min.js",
+                "contentScripts/problemContentScript/contentScript.js"
+            ],
+            "css": [
+                "libs/bootstrap-4.4.1-dist/css/bootstrap.min.css",
+                "contentScripts/problemContentScript/contentScript.css"
+            ]
+        },
+        {
+            "matches": ["https://leetcode.com/problemset/*"],
+            "js": ["contentScripts/listContentScript/contentScript.js"],
+            "css": ["contentScripts/listContentScript/contentScript.css"]
+        }
+    ],
+    "web_accessible_resources": [
+        "images/cblogo.png"
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://code.jquery.com https://stackpath.bootstrapcdn.com; object-src 'self'"
 }
